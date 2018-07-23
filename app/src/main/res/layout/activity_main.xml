@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstVerticalGuideline"
+        app:layout_constraintGuide_percent=".25"
+        android:orientation="vertical"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/secondVerticalGuideline"
+        app:layout_constraintGuide_percent=".5"
+        android:orientation="vertical"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/thirdVerticalGuideline"
+        app:layout_constraintGuide_percent=".75"
+        android:orientation="vertical"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/latitudeLabelTextView"
+        android:text="Latitude"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dateLabelTextView"/>
+
+    <TextView
+        android:id="@+id/latitudeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/firstVerticalGuideline"
+        tools:text="23.781358"
+        app:layout_constraintTop_toTopOf="@id/latitudeLabelTextView"/>
+
+    <TextView
+        android:id="@+id/longitudeLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude"
+        app:layout_constraintLeft_toRightOf="@+id/secondVerticalGuideline"
+        app:layout_constraintTop_toTopOf="@id/latitudeLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/longitudeTextView"
+        tools:text="90.400191"
+        app:layout_constraintLeft_toLeftOf="@+id/thirdVerticalGuideline"
+        app:layout_constraintTop_toTopOf="@id/latitudeLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateLabelTextView"
+        android:text="Date"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/latitudeLabelTextView"
+        app:layout_constraintBottom_toTopOf="@id/sunRiseLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateTextView"
+        tools:text="@tools:sample/date/ddmmyy"
+        app:layout_constraintTop_toTopOf="@id/dateLabelTextView"
+        app:layout_constraintLeft_toLeftOf="@id/firstVerticalGuideline"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeLabelTextView"
+        android:text="Time"
+        app:layout_constraintTop_toTopOf="@id/dateLabelTextView"
+        app:layout_constraintLeft_toLeftOf="@id/secondVerticalGuideline"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeTextView"
+        tools:text="@tools:sample/date/hhmmss"
+        app:layout_constraintLeft_toLeftOf="@id/thirdVerticalGuideline"
+        app:layout_constraintTop_toTopOf="@id/dateLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sunRiseLabelTextView"
+        android:text="Sun Rise"
+        app:layout_constraintTop_toBottomOf="@id/dateLabelTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/altitudeLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sunRiseTextView"
+        app:layout_constraintLeft_toLeftOf="@id/firstVerticalGuideline"
+        tools:text="@tools:sample/date/hhmmss"
+        app:layout_constraintTop_toTopOf="@id/sunRiseLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sunSetLabelTextView"
+        app:layout_constraintLeft_toLeftOf="@id/secondVerticalGuideline"
+        android:text="Sun Set"
+        app:layout_constraintTop_toTopOf="@id/sunRiseLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sunSetTextView"
+        app:layout_constraintLeft_toLeftOf="@id/thirdVerticalGuideline"
+        tools:text="@tools:sample/date/hhmmss"
+        app:layout_constraintTop_toTopOf="@id/sunRiseLabelTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/altitudeLabelTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Altitude"
+        app:layout_constraintTop_toBottomOf="@id/sunRiseLabelTextView"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/altitudeTextView"
+        app:layout_constraintLeft_toLeftOf="@id/firstVerticalGuideline"
+        tools:text="45°"
+        app:layout_constraintTop_toTopOf="@id/altitudeLabelTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/noonLabelTextView"
+        android:text="Noon"
+        app:layout_constraintTop_toTopOf="@id/altitudeLabelTextView"
+        app:layout_constraintLeft_toLeftOf="@id/secondVerticalGuideline"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/noonTextView"
+        app:layout_constraintLeft_toLeftOf="@id/thirdVerticalGuideline"
+        app:layout_constraintTop_toTopOf="@id/altitudeLabelTextView"
+        tools:text="@tools:sample/date/hhmmss"/>
+
+
+</android.support.constraint.ConstraintLayout>
