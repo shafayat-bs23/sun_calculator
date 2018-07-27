@@ -8,33 +8,34 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
 
-    val handler = Handler()
-    val runnable = object : Runnable {
-        override fun run() {
-            updateTime()
-            handler.postDelayed(this, 1000)
-        }
 
-    }
+    lateinit var presenter : MainPresenter
+    lateinit var locationTracker : LocationTracker
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        presenter = MainPresenter()
+        presenter.bindView(this)
+        locationTracker = LocationTracker(this)
+
     }
 
     override fun onStart() {
         super.onStart()
-        handler.post(runnable)
+        presenter.startClock()
+        locationTracker.getLocation()
 //        val update = thread(this)
 //        update.run()
     }
 
     override fun onStop() {
         super.onStop()
-        handler.removeCallbacks(runnable)
+        presenter.stopClock()
     }
 
 
@@ -48,15 +49,14 @@ class MainActivity : AppCompatActivity() {
 //
 //    }
 
-    private fun updateTime() {
-        Log.d("Running ", "here")
-        val current = System.currentTimeMillis()
-        val calender = Calendar.getInstance()
-        calender.timeInMillis = current
-        val h = calender.get(Calendar.HOUR)
-        val m = calender.get(Calendar.MINUTE)
-        val s = calender.get(Calendar.SECOND)
-        timeTextView?.text = h.toString()+":"+m.toInt().toString()+":"+s.toInt().toString()
+    override fun updateTimeAndDate(time : String, date : String) {
+        timeTextView.text = time
+        dateTextView.text = date
     }
 
+    override fun updateLatLon(lat: Double, lon: Double) {
+        latitudeTextView.text = lat.toString()
+        longitudeTextView.text = lon.toString()
+
+    }
 }

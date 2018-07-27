@@ -1,7 +1,15 @@
 package com.example.bs217.suncalculation
 
 import java.lang.Math.*
+import java.util.*
 import kotlin.math.sin
+
+fun getDayFromEpoch(epoch:Long){
+    var calender : Calendar = Calendar.getInstance()
+    calender.timeInMillis = epoch
+    print(calender.time)
+}
+
 
 fun getJdFromEpoch(epoch:Double) : Double{
 
@@ -24,7 +32,7 @@ fun getGeomMeanAnomalyInRadian(jc:Double) : Double{
     return toRadians(357.52911 + jc * (35999.05029 - 0.0001537 * jc))
 }
 
-fun getEccentEarchOrbit(jc:Double) : Double{
+fun getEccentEarthOrbit(jc:Double) : Double{
     return 0.016708634 - jc * (0.000042037 + 0.0000001267 * jc)
 }
 
@@ -65,8 +73,52 @@ fun getSunRightAscensionInRadian(jc:Double) : Double{
     return atan2(cos(sal), cos(oc)) * sin(sal)
 }
 
-fun sunDeclinationInRadian(jc:Double) : Double{
+fun getSunDeclinationInRadian(jc:Double) : Double{
     val oc : Double = getObliquityCorrectionInRadian(jc)
     val sal : Double = getSunApparentLongitudeInRedian(jc)
     return asin(sin(oc) * sin(sal))
+}
+
+fun getVaryingEffect(jc:Double) : Double{
+    val oc: Double = getObliquityCorrectionInRadian(jc)
+    return tan(oc/2.0) * tan(oc/2)
+}
+
+fun getEquiationOfTimeInSecond(jc : Double) : Double{
+    val ve : Double = getVaryingEffect(jc) //u
+    val gmls : Double = getGeomMeanLongitudeOfSunInRadian(jc) //i
+    val eeo : Double = getEccentEarthOrbit(jc) //k
+    val gmas : Double = getGeomMeanAnomalyInRadian(jc) //j
+    return 4 * toDegrees(ve * sin(2*gmls) - 2 * eeo * sin(gmas) + 4 * eeo * ve
+    * sin(gmas) * cos(2*gmls) - 0.5 * ve * ve * sin(4*gmls) - 1.25 * eeo * eeo
+    * sin(2*gmas)) * 60
+}
+
+fun getSunriseHourAngleInRadian(jc:Double, longitude:Double) : Double{
+    return acos(cos(toRadians(90.833))/(cos(toRadians(longitude)) * cos(getSunDeclinationInRadian(jc))) - tan(toRadians(longitude)) * tan(getSunDeclinationInRadian(jc)))
+}
+
+fun getSolarNoonInSecond(jc:Double, longitude:Double) : Double{
+    val eot : Double = getEquiationOfTimeInSecond(jc) / 60
+    return (720 - 4 * longitude - eot) * 60
+}
+
+fun getSunriseTimeInSecond(jc:Double, longitude: Double) : Double{
+    val sn : Double = getSolarNoonInSecond(jc, longitude)
+    val sha : Double = toDegrees(getSunriseHourAngleInRadian(jc, longitude))
+    return sn - sha*4
+}
+
+fun getSunsetTimeInSecond(jc: Double, longitude: Double) : Double{
+    val sn : Double = getSolarNoonInSecond(jc, longitude)
+    val sha : Double = toDegrees(getSunriseHourAngleInRadian(jc, longitude))
+    return sn + sha*4
+}
+
+fun getTrueSolarTime(){
+
+}
+
+fun main(args: Array<String>) {
+    getDayFromEpoch(Calendar.getInstance().timeInMillis)
 }
