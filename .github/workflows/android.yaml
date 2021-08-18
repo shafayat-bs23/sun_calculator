@@ -2,6 +2,8 @@ name: Android Pull Request & Master CI & CD to Firebase
 
 on:
   push:
+    branches:
+      - master
     tags:
       - v1.*
 
