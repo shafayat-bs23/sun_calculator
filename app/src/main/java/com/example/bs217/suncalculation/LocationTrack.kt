@@ -71,7 +71,7 @@ class LocationTrack : LocationListener {
                             MIN_DISTANCE_CHANGE_FOR_UPDATES,
                             this)
 
-                    location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                    location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
                     lat = location.latitude
                     lon = location.longitude
                     this.canGetLocation = true
@@ -100,20 +100,20 @@ class LocationTrack : LocationListener {
         })
     }
 
-    override fun onLocationChanged(location: Location?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onLocationChanged(location: Location) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onProviderEnabled(provider: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onProviderEnabled(provider: String) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onProviderDisabled(provider: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onProviderDisabled(provider: String) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
