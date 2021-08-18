@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "665045186595",
+    "project_id": "sun-calculation",
+    "storage_bucket": "sun-calculation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665045186595:android:53474fba82ea5330741996",
+        "android_client_info": {
+          "package_name": "com.example.bs217.suncalculation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665045186595-dptvqenqpdvjhqqm7hjqkdi85h4602fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcEyTMHJhk0wQNGX45v0DcFxD0LZNVMT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665045186595-dptvqenqpdvjhqqm7hjqkdi85h4602fe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
