@@ -13,11 +13,23 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "KEY", "\"" + getSecretKeys()["TEST_KEY"] + "\""
+        }
         release {
+            buildConfigField "String", "KEY", getSecretKeys()["TEST_KEY"]
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+def getSecretKeys(){
+    def keyFile = project.rootProject.file("local.properties")
+    def secretKeys = new Properties()
+    secretKeys.load(new FileInputStream(keyFile))
+    println(secretKeys)
+    return secretKeys
 }
 
 dependencies {
@@ -27,6 +39,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.orhanobut:logger:2.2.0'
 }
 repositories {
     mavenCentral()
