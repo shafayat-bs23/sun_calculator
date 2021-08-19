@@ -36,8 +36,8 @@ jobs:
         env:
           KEY: ${{secrets.TEST_KEY}}
         run: echo $KEY > local.properties
-      - name: build release
-        run: bash ./gradlew assembleDebug
+      - name: Build app
+        run: bash ./gradlew build
   #      - name: upload artifact to Firebase App Distribution
   #        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
   #        with:
