@@ -15,9 +15,9 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### git_commit_and_push
+### print
 ```
-fastlane git_commit_and_push
+fastlane print
 ```
 Responsible for pushing to remote.
 

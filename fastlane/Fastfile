@@ -3,6 +3,7 @@ lane :print do
   d = "1"
 end
 
+desc "After successful execution of all task, this block is called"
 after_all do
   git_add(path: "*")
   git_commit(
