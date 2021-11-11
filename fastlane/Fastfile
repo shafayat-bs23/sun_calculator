@@ -1,5 +1,9 @@
 desc "Responsible for pushing to remote."
-lane :git_commit_and_push do
+lane :print do
+  d = "1"
+end
+
+after_all do
   git_add(path: "*")
   git_commit(
     path: "*",
