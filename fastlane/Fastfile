@@ -8,9 +8,9 @@ PLAYSTORE_KEY_PATH = nil
 BUNDLE_FILE_PATH = nil
 
 before_all do
-    Dotenv.overload '.env.secret'
+    Dotenv.overload ".env.secret"
     KEYSTORE_PATH = Dir.pwd + "/../certificates/pet_project_key_store.jks"
-    BUNDLE_FILE_PATH = Dir.pwd + "/../app/replease/app-release.aab"
+    BUNDLE_FILE_PATH = Dir.pwd + "/../app/outputs/bundle/release/app-release.aab"
 end
 
 desc "Build the .aab file"
