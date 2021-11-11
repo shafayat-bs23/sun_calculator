@@ -1,4 +1,4 @@
-fastlane_require 'dotenv'
+fastlane_require "dotenv"
 
 
 PACKAGE_NAME = "com.example.bs217.suncalculation"
