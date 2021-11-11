@@ -1,0 +1,13 @@
+desc "Responsible for pushing to remote."
+lane :git_commit_and_push do
+  git_add(path: "*")
+  git_commit(
+    path: "*",
+    message: "#" + "UPDATED_VERSION_CODE" + "released"
+  )
+  push_to_git_remote(
+    local_branch: git_branch,
+    remote: "origin",
+    remote_branch: git_branch,
+  )
+end
