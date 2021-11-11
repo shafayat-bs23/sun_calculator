@@ -1,6 +1,30 @@
-desc "Responsible for pushing to remote."
-lane :print do
-  d = "1"
+fastlane_require 'dotenv'
+
+
+PACKAGE_NAME = "com.example.bs217.suncalculation"
+KEYSTORE_PATH = nil
+FIREBASE_KEY_PATH = nil
+PLAYSTORE_KEY_PATH = nil
+BUNDLE_FILE_PATH = nil
+
+before_all do
+    Dotenv.overload '.env.secret'
+    KEYSTORE_PATH = Dir.pwd + "/../certificates/pet_project_key_store.jks"
+    BUNDLE_FILE_PATH = Dir.pwd + "/../app/replease/app-release.aab"
+end
+
+desc "Build the .aab file"
+lane :build do
+    gradle(
+        task: "bundle",
+        build_type: "Release",
+        properties: {
+            "android.injected.signing.store.file" => KEYSTORE_PATH,
+            "android.injected.signing.store.password" => ENV['KEYSTORE_PASSWORD'],
+            "android.injected.signing.key.alias" => ENV['KEYSTORE_ALIAS'],
+            "android.injected.signing.key.password" => ENV['KEYSTORE_PASSWORD']
+    }
+)
 end
 
 desc "After successful execution of all task, this block is called"

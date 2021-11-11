@@ -15,11 +15,11 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### print
+### build
 ```
-fastlane print
+fastlane build
 ```
-Responsible for pushing to remote.
+Build the .aab file
 
 ----
 
