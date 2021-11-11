@@ -28,3 +28,4 @@ jobs:
           echo $KEY > local.properties
       - name: Build app
         run: bash ./gradlew build
+
