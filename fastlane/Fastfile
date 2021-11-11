@@ -4,6 +4,7 @@ lane :print do
 end
 
 desc "After successful execution of all task, this block is called"
+desc "Responsible for `git add`, `git commit` and `git push`"
 after_all do
   git_add(path: "*")
   git_commit(
